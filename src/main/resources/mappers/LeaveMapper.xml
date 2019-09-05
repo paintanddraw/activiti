@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.dao.LeaveMapper">
-	<resultMap id="LeaveInfoMap" type="com.example.demo.entity.LeaveInfo">
+	<resultMap id="LeaveInfoMap" type="leaveInfo">
 		<result property="id" column="id" />
 		<result property="leaveMsg" column="leave_msg" />
 		<result property="status" column="status"/>
@@ -19,7 +19,7 @@
 		)
 	</insert>
 	
-	<update id="update" parameterType="com.example.demo.entity.LeaveInfo">
+	<update id="update" parameterType="leaveInfo">
 		update leave_info 
 		<set>
 			<if test="id != null and id != ''">
