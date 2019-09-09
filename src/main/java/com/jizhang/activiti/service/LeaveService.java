@@ -5,7 +5,6 @@ import java.util.List;
 import com.jizhang.activiti.entity.LeaveInfo;
 
 
-
 public interface LeaveService {
 
 	/**

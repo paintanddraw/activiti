@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.dao.LeaveMapper">
+<mapper namespace="com.jizhang.activiti.mapper.LeaveMapper">
 	<resultMap id="LeaveInfoMap" type="leaveInfo">
 		<result property="id" column="id" />
 		<result property="leaveMsg" column="leave_msg" />
 		<result property="status" column="status"/>
-		
 	</resultMap>
 	
-	<select id="getById" parameterType="java.lang.String" resultMap="LeaveInfoMap">
+	<!-- <select id="getById" parameterType="java.lang.String" resultMap="LeaveInfoMap">
 		select * from leave_info where id = #{id}
 	</select>
 
@@ -17,7 +16,7 @@
 		values(
 			#{id},#{leaveMsg},#{status}
 		)
-	</insert>
+	</insert> -->
 	
 	<update id="update" parameterType="leaveInfo">
 		update leave_info 
@@ -33,5 +32,5 @@
 			</if>
 		</set>
 			where id = #{id}
-	</update>
+	</update> 
 </mapper>

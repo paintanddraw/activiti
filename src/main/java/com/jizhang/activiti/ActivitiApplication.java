@@ -9,18 +9,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-@MapperScan("com.zl.mapper")
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@MapperScan("com.jizhang.activiti.mapper")
 public class ActivitiApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(ActivitiApplication.class);
-
-    @Autowired
-    private TaskService taskService;
+    
     @Autowired
     private ProcessEngine processEngine;
+    
+    @Autowired
+    private TaskService taskService;
 
     @RequestMapping("/")
     public String index() {

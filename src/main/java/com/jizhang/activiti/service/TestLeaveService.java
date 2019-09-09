@@ -98,7 +98,7 @@ public class TestLeaveService {
 		
 		String key = execution.getProcessInstanceBusinessKey();
 		//LeaveInfo entity = new LeaveInfo();
-		LeaveInfo entity = leaveMapper.getById(key);
+		LeaveInfo entity = leaveMapper.selectById(key);
 		entity.setStatus(status);
 		leaveMapper.update(entity);
 		

@@ -1,28 +1,40 @@
 package com.jizhang.activiti.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.core.annotation.Order;
 
-import javax.sql.DataSource;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+@Order(1)
 @Configuration
 public class DruidConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource(){
-        return new DruidDataSource();
-    }
-
+	@Bean("bizDataSource")
+	@Primary
+	@ConfigurationProperties(prefix = "spring.datasource.biz")
+	public DataSource bizDataSource(){
+		return DataSourceBuilder.create().type(DruidDataSource.class).build();
+	}
+	
+	@Bean("activitiDataSource")
+	@ConfigurationProperties(prefix = "spring.datasource.activiti")
+	public DataSource activitiDataSource(){
+		return DataSourceBuilder.create().type(DruidDataSource.class).build();
+	}
+	
     @Bean
     public ServletRegistrationBean statViewServlet() {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean( new StatViewServlet(), "/druid/*" );

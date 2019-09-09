@@ -25,16 +25,16 @@ public class LeaveServiceImpl implements LeaveService {
 	private LeaveMapper leaveMapper;
 	@Autowired
 	private RuntimeService runtimeService;
+	
 	@Override
 	public void addLeaveAInfo(String msg) {
 		LeaveInfo leaveInfo = new LeaveInfo();
 		leaveInfo.setLeaveMsg(msg);
-		String id = UUID.randomUUID().toString();
-		leaveInfo.setId(id);
 		//新增一条记录至数据库中
-		leaveMapper.insert(leaveInfo);
+		int result = leaveMapper.insert(leaveInfo);
+		System.out.println("result: " + result);
 		//启动流程引擎
-		testLeaveService.startProcess(id);
+		testLeaveService.startProcess(leaveInfo.getId());
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class LeaveServiceImpl implements LeaveService {
 			ProcessInstance result = runtimeService.createProcessInstanceQuery().processInstanceId(task.getProcessInstanceId()).singleResult();
 			//获得业务流程的bussinessKey
 			String businessKey = result.getBusinessKey();
-			LeaveInfo leaveInfo = leaveMapper.getById(businessKey);
+			LeaveInfo leaveInfo = leaveMapper.selectById(businessKey);
 			leaveInfo.setTaskId(task.getId());
 			leaveInfoList.add(leaveInfo);
 		}
