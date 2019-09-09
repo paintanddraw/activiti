@@ -22,19 +22,19 @@ import com.alibaba.druid.support.http.WebStatFilter;
 @Configuration
 public class DruidConfig {
 
-	@Bean("bizDataSource")
+	/*@Bean("bizDataSource")
 	@Primary
 	@ConfigurationProperties(prefix = "spring.datasource.biz")
 	public DataSource bizDataSource(){
 		return DataSourceBuilder.create().type(DruidDataSource.class).build();
-	}
+	}*/
 	
 	@Bean("activitiDataSource")
 	@ConfigurationProperties(prefix = "spring.datasource.activiti")
 	public DataSource activitiDataSource(){
 		return DataSourceBuilder.create().type(DruidDataSource.class).build();
 	}
-	
+	/*
     @Bean
     public ServletRegistrationBean statViewServlet() {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean( new StatViewServlet(), "/druid/*" );
@@ -58,6 +58,6 @@ public class DruidConfig {
         filterRegistrationBean.setInitParameters( initParams );
         filterRegistrationBean.setUrlPatterns( Arrays.asList("/*") );
         return filterRegistrationBean;
-    }
+    }*/
 
 }
