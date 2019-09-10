@@ -1,9 +1,7 @@
 package com.jizhang.activiti.mapper;
 
-import com.jizhang.activiti.annotation.DynamicSwitchDataSource;
-import com.jizhang.activiti.constants.DataSourceConstants;
-import com.jizhang.activiti.entity.UserInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jizhang.activiti.entity.UserInfo;
 
 /**
  * <p>
@@ -13,7 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author aaron
  * @since 2019-09-09
  */
-@DynamicSwitchDataSource(dataSource = DataSourceConstants.DEFAULT_DATASOURCE)
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
 
 }

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
@@ -18,6 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.jizhang.activiti.constants.DataSourceConstants;
 import com.jizhang.activiti.router.MultiDataSourceRouter;
 
@@ -25,7 +25,7 @@ import com.jizhang.activiti.router.MultiDataSourceRouter;
 @Configuration
 public class DruidConfig {
 
-	@Bean("defaultDataSource")
+	@Bean
 	@Primary
 	@ConfigurationProperties(prefix = "spring.datasource.druid")
 	public DataSource defaultDataSource(){
@@ -55,43 +55,15 @@ public class DruidConfig {
      * @return
      */
     @Bean
-    public PlatformTransactionManager txManager() {
+    public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
     }
 
-	@Bean(name = "sqlSessionFactory")
+	@Bean
 	@ConfigurationProperties(prefix = "mybatis-plus")
-	public SqlSessionFactory sqlSessionFactory(
-			@Qualifier(value = "dataSource") MultiDataSourceRouter dataSource) throws Exception {
+	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
-		bean.setDataSource(dataSource);
+		bean.setDataSource(dataSource());
 		return bean.getObject();
 	}
-
-	/*
-    @Bean
-    public ServletRegistrationBean statViewServlet() {
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean( new StatViewServlet(), "/druid/*" );
-        Map<String, String> initParams = new HashMap<>();
-
-        initParams.put( "loginUsername", "admin" );
-        initParams.put( "loginPassword", "admin" );
-        initParams.put( "allow", "" );//默认允许所有
-        initParams.put( "deny", "" );
-        servletRegistrationBean.setInitParameters( initParams );
-        return servletRegistrationBean;
-    }
-
-    @Bean
-    public FilterRegistrationBean statViewFilter()
-    {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(  );
-        filterRegistrationBean.setFilter( new WebStatFilter());
-        Map<String,String> initParams = new HashMap<>(  );
-        initParams.put( "exclusions", "*.js,*.css,*.jpg,*.gif,/druid/*" );
-        filterRegistrationBean.setInitParameters( initParams );
-        filterRegistrationBean.setUrlPatterns( Arrays.asList("/*") );
-        return filterRegistrationBean;
-    }*/
-
 }

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD,ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface DynamicSwitchDataSource {
+public @interface DataSource {
 
-    String dataSource() default "";
+    String value() default "";
 }

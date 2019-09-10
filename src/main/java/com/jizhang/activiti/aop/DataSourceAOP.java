@@ -11,9 +11,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.jizhang.activiti.annotation.DynamicSwitchDataSource;
+import com.jizhang.activiti.annotation.DataSource;
 import com.jizhang.activiti.utils.DataSourceHolder;
 
 
@@ -26,25 +27,25 @@ import com.jizhang.activiti.utils.DataSourceHolder;
 @Aspect
 @Component
 @Slf4j
-public class HandleDataSourceAOP {
-	
-	
-	//@within在类上设置
-    //@annotation在方法上进行设置
-	@Pointcut("@within(com.jizhang.activiti.annotation.DynamicSwitchDataSource)||@annotation(com.jizhang.activiti.annotation.DynamicSwitchDataSource)")
+@Order(-100)
+public class DataSourceAOP {
+
+	@Pointcut("@within(com.jizhang.activiti.annotation.DataSource)" +
+            "|| @annotation(com.jizhang.activiti.annotation.DataSource)")
 	public void pointcut(){}
 
     @Before("pointcut()")
     public void doBefore(JoinPoint joinPoint)
     {
-        Method method = ((MethodSignature)joinPoint.getSignature()).getMethod();
-        DynamicSwitchDataSource annotationClass = method.getAnnotation(DynamicSwitchDataSource.class);//获取方法上的注解
+    	Method method = ((MethodSignature)joinPoint.getSignature()).getMethod();
+    	System.out.println("=========================================={}" + method.getName());
+        DataSource annotationClass = method.getAnnotation(DataSource.class);
         if(annotationClass == null){
-            annotationClass = joinPoint.getTarget().getClass().getAnnotation(DynamicSwitchDataSource.class);//获取类上面的注解
+            annotationClass = joinPoint.getTarget().getClass().getAnnotation(DataSource.class);
             if(annotationClass == null) return;
         }
         //获取注解上的数据源的值的信息
-        String dataSourceKey = annotationClass.dataSource();
+        String dataSourceKey = annotationClass.value();
         if(dataSourceKey !=null){
             //给当前的执行SQL的操作设置特殊的数据源的信息
             DataSourceHolder.set(dataSourceKey);
