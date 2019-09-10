@@ -20,5 +20,7 @@ public class LeaveInfo {
 	
 	@TableField(value = "leave_msg")
 	private String leaveMsg;
+	
+	@TableField(value = "task_id")
 	private String taskId;
 }

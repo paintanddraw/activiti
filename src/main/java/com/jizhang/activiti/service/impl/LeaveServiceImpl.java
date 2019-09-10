@@ -29,6 +29,8 @@ public class LeaveServiceImpl implements LeaveService {
 	@Override
 	public void addLeaveAInfo(String msg) {
 		LeaveInfo leaveInfo = new LeaveInfo();
+		String uuid = UUID.randomUUID().toString();
+		leaveInfo.setId(uuid);
 		leaveInfo.setLeaveMsg(msg);
 		//新增一条记录至数据库中
 		int result = leaveMapper.insert(leaveInfo);

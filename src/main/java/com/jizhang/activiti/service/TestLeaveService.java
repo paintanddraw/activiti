@@ -27,8 +27,10 @@ public class TestLeaveService {
 
 	@Autowired
 	private LeaveMapper leaveMapper;
+	
 	@Autowired
 	private RuntimeService runtimeService;
+	
 	@Autowired
 	private TaskService taskService;
 	
