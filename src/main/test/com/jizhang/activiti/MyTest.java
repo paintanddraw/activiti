@@ -33,7 +33,6 @@ public class MyTest {
 	
 	@Test
 	public void userTest(){
-		DataSourceHolder.set(Con);
 		UserInfo userInfo = userInfoMapper.selectById(123);
 		System.out.println("userinfo: " + userInfo);
 	}

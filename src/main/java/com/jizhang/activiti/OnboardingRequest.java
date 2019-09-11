@@ -58,11 +58,7 @@ public class OnboardingRequest {
 		System.out.println("Onboarding process started with process instance id ["
 				+ processInstance.getProcessInstanceId() + "] key [" + processInstance.getProcessDefinitionKey() + "]");
 
-		TaskService taskService = processEngine.getTaskService();
-		FormService formService = processEngine.getFormService();
-		HistoryService historyService = processEngine.getHistoryService();
-
-		Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
 		while (processInstance != null && !processInstance.isEnded()) {
 			List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("managers").list();
 			System.out.println("Active outstanding tasks: [" + tasks.size() + "]");
@@ -121,6 +117,6 @@ public class OnboardingRequest {
 			processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstance.getId())
 					.singleResult();
 		}
-		scanner.close();
+		scanner.close();*/
 	}
 }

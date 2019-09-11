@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import lombok.Data;
 import lombok.ToString;
 
@@ -21,6 +20,5 @@ public class LeaveInfo {
 	@TableField(value = "leave_msg")
 	private String leaveMsg;
 	
-	@TableField(value = "task_id")
 	private String taskId;
 }
