@@ -1,2 +1,2 @@
-SpringBoot集成MyBatis+Activiti
+SpringBoot集成MyBatis+Activiti 全注解版
 
