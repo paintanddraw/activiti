@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 @TableName(value = "leave_info")
 public class LeaveInfo {
+
 	@TableId(value = "id", type = IdType.UUID)
 	private String id;
 	
@@ -19,6 +20,6 @@ public class LeaveInfo {
 	
 	@TableField(value = "leave_msg")
 	private String leaveMsg;
-	
+
 	private String taskId;
 }

@@ -1,0 +1,6 @@
+<mapper xmlns="http://mybatis.org/schema/mybatis-mapper" namespace="com.jizhang.activiti.mapper.TestMapper">
+
+
+    <select id="getById" resultType="com.jizhang.activiti.entity.LeaveInfo"></select>
+
+</mapper>

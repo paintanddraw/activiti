@@ -14,11 +14,10 @@ import com.jizhang.activiti.annotation.DataSource;
 import com.jizhang.activiti.utils.DataSourceHolder;
 
 /**
- * 使用AOP拦截特定的注解去动态的切换数据源
- * @author Administrator
- *
+ * @Author: Aaron
+ * @Date: 2019/9/11 18:51
+ * @Desc: 通过AOP, 在拥有{@link DataSource}注解类和方法上进行数据源的设置
  */
-
 @Aspect
 @Component
 @Slf4j

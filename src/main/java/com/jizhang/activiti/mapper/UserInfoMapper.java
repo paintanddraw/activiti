@@ -13,4 +13,5 @@ import com.jizhang.activiti.entity.UserInfo;
  */
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
 
+    UserInfo queryOneById(Integer id);
 }

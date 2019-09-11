@@ -6,11 +6,11 @@ import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
- 
+
 /**
- * Mybatis-plus 代码生成器
- * @author Administrator
- *
+ * @Author: Aaron
+ * @Date: 2019/9/11 18:51
+ * @Desc: Mybaits-Plus 代码生成器
  */
 public class MybatisPlusGenerator {
     public static void main(String[] args) {
@@ -59,7 +59,7 @@ public class MybatisPlusGenerator {
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
-        pc.setMapper("mapper");
+        pc.setMapper("mybatis/mapper");
         pc.setEntity("entity");
         pc.setXml("xml");
         mpg.setPackageInfo(pc);

@@ -1,7 +1,9 @@
 package com.jizhang.activiti.constants;
 
 /**
- * @author Administrator
+ * @Author: Aaron
+ * @Date: 2019/9/11 18:51
+ * @Desc: 多数源标识常量
  */
 public class DataSourceConstants {
 	public final static String DEFAULT_DATASOURCE = "DEFAULT";
