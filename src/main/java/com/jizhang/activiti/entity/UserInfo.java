@@ -8,11 +8,11 @@ import java.io.Serializable;
  * </p>
  *
  * @author aaron
- * @since 2019-09-09
+ * @since 2019-09-16
  */
 public class UserInfo implements Serializable {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 
     private Integer id;
 

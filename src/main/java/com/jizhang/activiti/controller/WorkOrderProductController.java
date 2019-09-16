@@ -14,8 +14,8 @@ import org.springframework.stereotype.Controller;
  * @since 2019-09-16
  */
 @Controller
-@RequestMapping("/userInfo")
-public class UserInfoController {
+@RequestMapping("/workOrderProduct")
+public class WorkOrderProductController {
 
 }
 

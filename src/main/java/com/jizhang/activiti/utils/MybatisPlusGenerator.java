@@ -40,14 +40,14 @@ public class MybatisPlusGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/activiti");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/zl_work_order");
         mpg.setDataSource(dsc);
  
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
        // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "user_info" }); // 需要生成的表
+        strategy.setInclude(new String[] { "work_order_product" }); // 需要生成的表
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
         strategy.setSuperMapperClass(null);
@@ -59,7 +59,7 @@ public class MybatisPlusGenerator {
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
-        pc.setMapper("mybatis/mapper");
+        pc.setMapper("mapper");
         pc.setEntity("entity");
         pc.setXml("xml");
         mpg.setPackageInfo(pc);
